@@ -27,7 +27,9 @@ jobs:
         image: postgres:16
         ports: ['5432:5432']
         env:
+          POSTGRES_USER: devuser
           POSTGRES_PASSWORD: devpassword
+          POSTGRES_DB: blog_test
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -96,6 +98,9 @@ jobs:
     # Customize this step as desired.
     - name: Check Formatting
       run: mix format --check-formatted
+
+    - name: Migrate
+      run: mix ecto.migrate
 
     # Step: Execute the tests.
     - name: Run tests
