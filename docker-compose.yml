@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:16
+    container_name: blog_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: devuser
+      POSTGRES_PASSWORD: devpassword
+      POSTGRES_DB: blog_test
+    volumes:
+      - blog_test_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+   blog_test_data:
