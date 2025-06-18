@@ -2,8 +2,8 @@ import Config
 
 # Configure your database
 config :blog, Blog.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: "devuser",
+  password: "devpassword",
   hostname: "localhost",
   database: "blog_dev",
   stacktrace: true,
