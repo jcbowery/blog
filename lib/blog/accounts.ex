@@ -360,7 +360,7 @@ defmodule Blog.Accounts do
   def add_role_to_user(%{"user" => user_id, "role" => role}) do
     user = Repo.get!(User, user_id) |> Repo.preload(:roles)
     role = Repo.get_by!(Role, name: role)
-    roles = user.roles ++ [role] |> Enum.uniq_by(& &1.id)
+    roles = (user.roles ++ [role]) |> Enum.uniq_by(& &1.id)
 
     user
     |> Ecto.Changeset.change()
