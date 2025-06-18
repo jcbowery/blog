@@ -12,7 +12,7 @@ services:
     volumes:
       - blog_dev_data:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
+      - "5433:5432"
 
   db2:
     image: postgres:16
@@ -25,7 +25,7 @@ services:
     volumes:
       - blog_test_data:/var/lib/postgresql/data
     ports:
-      - "5433:5432"
+      - "5432:5432"
 
 volumes:
    blog_dev_data:
