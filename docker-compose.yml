@@ -3,7 +3,20 @@ version: '3.8'
 services:
   db:
     image: postgres:16
-    container_name: blog_postgres
+    container_name: blog_postgres_dev
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: devuser
+      POSTGRES_PASSWORD: devpassword
+      POSTGRES_DB: blog_dev
+    volumes:
+      - blog_dev_data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+
+  db2:
+    image: postgres:16
+    container_name: blog_postgres_test
     restart: unless-stopped
     environment:
       POSTGRES_USER: devuser
@@ -15,4 +28,5 @@ services:
       - "5432:5432"
 
 volumes:
+   blog_dev_data:
    blog_test_data:
